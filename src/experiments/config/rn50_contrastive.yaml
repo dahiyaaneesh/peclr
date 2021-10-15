@@ -1,0 +1,17 @@
+training: {  
+    C: 1,
+    batch_size: 128,
+    num_epochs: 100,
+    resume: 'contrastive',
+    resume_path: '/cluster/work/hilliges/spurra/datasets/Contrastive_Resnet50.ckpt',
+}
+
+
+model: {
+    backend_model: "resnet50",
+    image_mean: [0.485, 0.456, 0.406],
+    image_std: [0.229, 0.224, 0.225],
+    norm_layer: "bn", 
+    pretrained: False, # ImageNet pre-training
+}
+

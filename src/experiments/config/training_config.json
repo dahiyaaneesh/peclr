@@ -1,0 +1,62 @@
+{
+    "batch_size": 128,
+    "accumulate_grad_batches": 1,
+    "epochs": 50,
+    "train_ratio": 0.9999999999,
+    "gpu": true,
+    "num_workers": 8,
+    "seed": 5,
+    "precision": 16,
+    "augmentation_flags": {
+        "color_drop": false,
+        "color_jitter": false,
+        "crop": false,
+        "cut_out": false,
+        "gaussian_blur": false,
+        "random_crop": false,
+        "resize": false,
+        "rotate": false,
+        "gaussian_noise": false,
+        "sobel_filter": false
+    },
+    "augmentation_params": {
+        "crop_margin": 1.25,
+        "crop_margin_range": [
+            0.9,
+            1.5
+        ],
+        "cut_out_fraction": [
+            0.0,
+            0.16
+        ],
+        "hue_factor_range": [
+            0.01,
+            1.0
+        ],
+        "max_angle": 45,
+        "min_angle": -45,
+        "resize_shape": [
+            128,
+            128
+        ],
+        "sat_factor_range": [
+            0.01,
+            1.0
+        ],
+        "value_factor_alpha_range": [
+            0.5,
+            1
+        ],
+        "value_factor_beta_range": [
+            5,
+            20
+        ],
+        "crop_box_jitter": [
+            0.0,
+            15.0
+        ],
+        "sobel_kernel": 3,
+        "noise_std": 25
+    },
+    "use_palm": false
+}

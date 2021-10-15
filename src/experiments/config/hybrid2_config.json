@@ -1,0 +1,13 @@
+{
+    "batch_size": 128,
+    "lr": 1e-4,
+    "opt_weight_decay": 1e-6,
+    "output_dim": 128,
+    "projection_head_hidden_dim": 512,
+    "projection_head_input_dim": 2048,
+    "warmup_epochs": 10,
+    "num_of_mini_batch":1,
+    "augmentation":[],
+    "optimizer": "LARS",
+    "resnet_size":"50"
+}
