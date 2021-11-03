@@ -5,10 +5,10 @@
 <img src="teaser.png" alt="drawing" width="500"/>
 </p>
 
-This repository contains the code for the paper [Self-Supervised 3D Hand Pose Estimation from monocular RGB via Contrastive Learning](https://arxiv.org/abs/2106.05953).
+This is the official repository containing the code for the paper [Self-Supervised 3D Hand Pose Estimation from monocular RGB via Contrastive Learning](https://arxiv.org/abs/2106.05953).
 
 # Installation
-This code has been tested on Ubuntu 18.04.5 and python 3.8.10
+The code has been tested on Ubuntu 18.04.5 and python 3.8.10
 
 1. Setup python environment.
 
@@ -40,25 +40,27 @@ export SAVED_META_INFO_PATH="$BASE_PATH/data/models"
 
 4. Download the data.
 
-We perform training and evaluation on [FreiHand](https://lmb.informatik.uni-freiburg.de/projects/freihand/) and youtube3D(https://github.com/arielai/youtube_3d_hands). These datasets should be downloaded in ``data/raw/freihand_dataset`` and  ``data/raw/youtube_3d_hands``folder of peclr directory.
-
-
+We perform training and evaluation on [FreiHand](https://lmb.informatik.uni-freiburg.de/projects/freihand/) and [youtube3Dhands](https://github.com/arielai/youtube_3d_hands). These datasets should be downloaded into ``data/raw/freihand_dataset`` and  ``data/raw/youtube_3d_hands`` of the main PeCLR directory.
 
 # Training 
 
-Note: [Comet](https://www.comet.ml/) is the logging service used to monitor the training of the models. Setting up comet is optional. It doesn't effect model training.
+Note: [Comet](https://www.comet.ml/) is the logging service used to monitor the training of the models. Setting up comet is optional. It does not affect model training.
 
-Following are the commands used to train the  PeCLR model in Table 2 and 3 of the paper.
+In the following are the commands used to train the best performing PeCLR model of the main paper.
 
-### ResNet 50
-``python src/experiments/peclr_training.py --color_jitter --random_crop --rotate --crop -resnet_size 50  -sources freihand -sources youtube  --resize   -epochs 100 -batch_size 128  -accumulate_grad_batches 16 -save_top_k 1  -save_period 1   -num_workers 8``
+### ResNet-50
+```
+python src/experiments/peclr_training.py --color_jitter --random_crop --rotate --crop -resnet_size 50  -sources freihand -sources youtube  --resize   -epochs 100 -batch_size 128  -accumulate_grad_batches 16 -save_top_k 1  -save_period 1   -num_workers 8
+```
 
-### Resnet 152
-``python src/experiments/peclr_training.py --color_jitter --random_crop --rotate --crop -resnet_size 152  -sources freihand -sources youtube  --resize   -epochs 100 -batch_size 128  -accumulate_grad_batches 16 -save_top_k 1  -save_period 1   -num_workers 8``
+### Resnet-152
+```
+python src/experiments/peclr_training.py --color_jitter --random_crop --rotate --crop -resnet_size 152  -sources freihand -sources youtube  --resize   -epochs 100 -batch_size 128  -accumulate_grad_batches 16 -save_top_k 1  -save_period 1   -num_workers 8
+```
 
 # Loading PeCLR weights into a Torchvision ResNet model
 
-The pre-trained PeCLR model can be easily loaded into a resnet model from torchvision.models. This can be then used for fine-tuning for one or more datasets with labels.
+The pre-trained PeCLR model acquired from training can be easily loaded into a ResNet model from torchvision.models. The pre-trained weights can then be used for fine-tuning on labeled datasets.
 ```
 from src.models.port_model import peclr_to_torchvision
 import torchvision
@@ -70,7 +72,7 @@ peclr_to_torchvision(resnet152, "path_to_peclr_with_resnet_152_base")
 ```
 
 # Pre-trained models
-We offer RN50 and RN152 pre-trained on FreiHAND and YT3DH using PeCLR. The models can be found [here](https://dataset.ait.ethz.ch/downloads/guSEovHBpR/).
+We offer ResNet-50 and ResNet-152 pre-trained on FreiHAND and YT3DH using PeCLR. The models can be found [here](https://dataset.ait.ethz.ch/downloads/guSEovHBpR/).
 Download the model desired to the folder of choice and then unpack it using
 ```
 tar -xvzf peclr_rn{50,152}.tar.gz
