@@ -39,8 +39,7 @@ export SAVED_META_INFO_PATH="$BASE_PATH/data/models"
 ```
 
 4. Download the data.
-
-We perform training and evaluation on [FreiHand](https://lmb.informatik.uni-freiburg.de/projects/freihand/) and [youtube3Dhands](https://github.com/arielai/youtube_3d_hands). These datasets should be downloaded into ``data/raw/freihand_dataset`` and  ``data/raw/youtube_3d_hands`` of the main PeCLR directory.
+Download [FreiHand](https://lmb.informatik.uni-freiburg.de/projects/freihand/) and [youtube3Dhands](https://github.com/arielai/youtube_3d_hands) and extract the datasets into ``data/raw/freihand_dataset`` and  ``data/raw/youtube_3d_hands`` of the main PeCLR directory respectively.
 
 # Training 
 
