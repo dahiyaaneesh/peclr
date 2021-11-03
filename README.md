@@ -48,19 +48,17 @@ We perform training and evaluation on [FreiHand](https://lmb.informatik.uni-frei
 
 Note: [Comet](https://www.comet.ml/) is the logging service used to monitor the training of the models. Setting up comet is optional. It doesn't effect model training.
 
-## Pretraining
 Following are the commands used to train the  PeCLR model in Table 2 and 3 of the paper.
 
-### PeCLR
-1. Resnet 152:
-``python src/experiments/peclr_training.py --color_jitter --random_crop --rotate --crop -resnet_size 152  -sources freihand -sources youtube  --resize   -epochs 100 -batch_size 128  -accumulate_grad_batches 16 -save_top_k 1  -save_period 1   -num_workers 8``
-
-2. ResNet 50:
+### ResNet 50
 ``python src/experiments/peclr_training.py --color_jitter --random_crop --rotate --crop -resnet_size 50  -sources freihand -sources youtube  --resize   -epochs 100 -batch_size 128  -accumulate_grad_batches 16 -save_top_k 1  -save_period 1   -num_workers 8``
 
-# Loading PeCLR weights into a ResNet model
+### Resnet 152
+``python src/experiments/peclr_training.py --color_jitter --random_crop --rotate --crop -resnet_size 152  -sources freihand -sources youtube  --resize   -epochs 100 -batch_size 128  -accumulate_grad_batches 16 -save_top_k 1  -save_period 1   -num_workers 8``
 
-The pretrained PeCLR model can be easily loaded into a resnet model from torchvision.models. This can be then used for fine-tuning for one or more datasets with labels.
+# Loading PeCLR weights into a Torchvision ResNet model
+
+The pre-trained PeCLR model can be easily loaded into a resnet model from torchvision.models. This can be then used for fine-tuning for one or more datasets with labels.
 ```
 from src.models.port_model import peclr_to_torchvision
 import torchvision
@@ -93,6 +91,7 @@ rn152.load_state_dict(peclr_weights['state_dict'])
 
 
 # Citation
+If this repository has been useful for your project, please cite the following work:
 ```
 @inproceedings{spurr2021self,
   title={Self-Supervised 3D Hand Pose Estimation from monocular RGB via Contrastive Learning},
