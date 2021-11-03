@@ -42,13 +42,6 @@ export SAVED_META_INFO_PATH="$BASE_PATH/data/models"
 
 We perform training and evaluation on [FreiHand](https://lmb.informatik.uni-freiburg.de/projects/freihand/) and youtube3D(https://github.com/arielai/youtube_3d_hands). These datasets should be downloaded in ``data/raw/freihand_dataset`` and  ``data/raw/youtube_3d_hands``folder of peclr directory.
 
-5. Download models.
-
-Note: The pre-trained models will be released soon.
-
- The models should be downloaded in ``data/models`` folder of peclr directory.
-
-
 
 
 # Training 
@@ -65,7 +58,7 @@ Following are the commands used to train the  PeCLR model in Table 2 and 3 of th
 2. ResNet 50:
 ``python src/experiments/peclr_training.py --color_jitter --random_crop --rotate --crop -resnet_size 50  -sources freihand -sources youtube  --resize   -epochs 100 -batch_size 128  -accumulate_grad_batches 16 -save_top_k 1  -save_period 1   -num_workers 8``
 
-## Loading PeCLR weights into a ResNet model
+# Loading PeCLR weights into a ResNet model
 
 The pretrained PeCLR model can be easily loaded into a resnet model from torchvision.models. This can be then used for fine-tuning for one or more datasets with labels.
 ```
@@ -76,6 +69,26 @@ import torchvision
 resnet152 = torchvision.models.resnet152(pretrained=True)
 peclr_to_torchvision(resnet152, "path_to_peclr_with_resnet_152_base")
 # Note: The last 'fc' layer in resnet model is not updated
+```
+
+# Pre-trained models
+We offer RN50 and RN152 pre-trained on FreiHAND and YT3DH using PeCLR. The models can be found [here](https://dataset.ait.ethz.ch/downloads/guSEovHBpR/)
+Download the model desired to the folder of choice and then unpack it using
+```
+tar -xvzf peclr_rn{50,152}.tar.gz
+```
+The models have been converted to torchvision's model description and can be loaded directly:
+```
+import torch
+import torchvision.models as models
+# For ResNet-50
+rn50 = models.resnet50()
+peclr_weights = torch.load('peclr_rn50_yt3dh_fh.pth')
+rn50.load_state_dict(peclr_weights['state_dict'])
+# For ResNet-152
+rn152 = models.resnet152()
+peclr_weights = torch.load('peclr_rn152_yt3dh_fh.pth')
+rn152.load_state_dict(peclr_weights['state_dict'])
 ```
 
 
