@@ -18,14 +18,14 @@ python3 -m venv ~/peclr_env
 source ~/peclr_env/bin/activate
 ```
 
-2.  Install pytorch (1.7.0) and other requirements. More info on installation of  pytorch 1.7.0 can be found [here](https://pytorch.org/get-started/previous-versions/) .
+2.  Install pytorch (1.7.0) and other requirements. More info on installation of pytorch 1.7.0 can be found [here](https://pytorch.org/get-started/previous-versions/) .
 ```
 pip install torch==1.7.0 torchvision==0.8.0 torchaudio==0.7.0 
 pip install -r requirements.txt
 ```
 
 
-3.  Define environment variables.
+3.  Define the environment variables.
 
 ```
 export BASE_PATH='<path_to_repo>'
@@ -38,8 +38,7 @@ export SAVED_MODELS_BASE_PATH="$BASE_PATH/data/models/peclr"
 export SAVED_META_INFO_PATH="$BASE_PATH/data/models" 
 ```
 
-4. Download the data.
-Download [FreiHand](https://lmb.informatik.uni-freiburg.de/projects/freihand/) and [youtube3Dhands](https://github.com/arielai/youtube_3d_hands) and extract the datasets into ``data/raw/freihand_dataset`` and  ``data/raw/youtube_3d_hands`` of the main PeCLR directory respectively.
+4. Download [FreiHand](https://lmb.informatik.uni-freiburg.de/projects/freihand/) and [youtube3Dhands](https://github.com/arielai/youtube_3d_hands) and extract the datasets into ``data/raw/freihand_dataset`` and  ``data/raw/youtube_3d_hands`` of the main PeCLR directory respectively.
 
 # Training 
 
