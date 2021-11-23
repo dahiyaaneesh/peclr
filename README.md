@@ -69,7 +69,7 @@ peclr_to_torchvision(resnet152, "path_to_peclr_with_resnet_152_base")
 # Note: The last 'fc' layer in resnet model is not updated
 ```
 
-# Pre-trained models
+# Pre-trained PeCLR models
 We offer ResNet-50 and ResNet-152 pre-trained on FreiHAND and YT3DH using PeCLR. The models can be found [here](https://dataset.ait.ethz.ch/downloads/guSEovHBpR/).
 Download the model desired to the folder of choice and then unpack it using
 ```
@@ -89,6 +89,8 @@ peclr_weights = torch.load('peclr_rn152_yt3dh_fh.pth')
 rn152.load_state_dict(peclr_weights['state_dict'])
 ```
 
+# Fine-tuned PeCLR models
+We will soon offer the fine-tuned models and corresponding model description that achieved the final performance as stated in Table 2.
 
 # Citation
 If this repository has been useful for your project, please cite the following work:
