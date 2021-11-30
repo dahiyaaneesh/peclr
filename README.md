@@ -58,7 +58,7 @@ python src/experiments/peclr_training.py --color_jitter --random_crop --rotate -
 
 # Loading PeCLR weights into a Torchvision ResNet model
 
-The pre-trained PeCLR model acquired from training can be easily loaded into a ResNet model from torchvision.models. The pre-trained weights can then be used for fine-tuning on labeled datasets.
+The pre-trained PeCLR weights acquired from training can be easily loaded into a ResNet model from torchvision.models. The pre-trained weights can then be used for fine-tuning on labeled datasets.
 ```
 from src.models.port_model import peclr_to_torchvision
 import torchvision
@@ -70,7 +70,7 @@ peclr_to_torchvision(resnet152, "path_to_peclr_with_resnet_152_base")
 ```
 
 # Pre-trained PeCLR models
-We offer ResNet-50 and ResNet-152 pre-trained on FreiHAND and YT3DH using PeCLR. The models can be downloaded [here](https://dataset.ait.ethz.ch/downloads/guSEovHBpR/) and unpacked via tar:
+We offer ResNet-50 and ResNet-152 pre-trained on FreiHAND and YT3DH using PeCLR. The models can be downloaded [here](https://dataset.ait.ethz.ch/downloads/guSEovHBpR/) and unpacked via `tar`:
 ```
 # Download pre-trained ResNet-50
 wget https://dataset.ait.ethz.ch/downloads/guSEovHBpR/peclr_rn50.tar.gz
@@ -96,8 +96,45 @@ rn152.load_state_dict(peclr_weights['state_dict'])
 ```
 
 # Fine-tuned PeCLR models
-We will soon offer the fine-tuned models and corresponding model description that achieved the final performance as stated in Table 2.
-
+We offer ResNet-50 and ResNet-152 fine-tuned on FreiHAND from the above PeCLR pre-trained weights. The models can be downloaded [here](https://dataset.ait.ethz.ch/downloads/guSEovHBpR/) and unpacked via `tar`:
+```
+# Download fine-tuned ResNet-50
+wget https://dataset.ait.ethz.ch/downloads/guSEovHBpR/rn50_peclr_yt3d-fh_pt_fh_ft.tar.gz
+tar -xvzf rn50_peclr_yt3d-fh_pt_fh_ft.tar.gz
+```
+```
+# Download fine-tuned ResNet-152
+wget https://dataset.ait.ethz.ch/downloads/guSEovHBpR/rn152_peclr_yt3d-fh_pt_fh_ft.tar.gz
+tar -xvzf rn152_peclr_yt3d-fh_pt_fh_ft.tar.gz
+```
+The model weights follow the model description of `src/models/rn_25D_wMLPref.py`. Thus, one can load them in the following manner:
+```
+import torch
+from src.models.rn_25D_w_MLPref import RN_25D_wMLPref
+# For RN50
+model_type = 'rn50'
+# For RN152
+model_type = 'rn152'
+model = RN_25D_wMLPref(backend_model=model_type)
+model_path = f'{model_type}_peclr_yt3d-fh_pt_fh_ft.pth'
+checkpoint = torch.load(model_path)
+model.load_state_dict(checkpoint['state_dict'])
+```
+These model weights achieve the following performance on the FreiHAND leaderboard:
+```
+ResNet-50 + PeCLR
+Evaluation 3D KP results:
+auc=0.357, mean_kp3d_avg=4.71 cm
+Evaluation 3D KP ALIGNED results:
+auc=0.860, mean_kp3d_avg=0.71 cm
+```
+```
+ResNet-152 + PeCLR
+Evaluation 3D KP results:
+auc=0.360, mean_kp3d_avg=4.56 cm
+Evaluation 3D KP ALIGNED results:
+auc=0.868, mean_kp3d_avg=0.66 cm
+```
 # Citation
 If this repository has been useful for your project, please cite the following work:
 ```
