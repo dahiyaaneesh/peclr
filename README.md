@@ -146,3 +146,23 @@ If this repository has been useful for your project, please cite the following w
   year={2021}
 }
 ```
+If the RN_25D_wMLPref model description was useful for your project, please cite the following works:
+```
+@inproceedings{iqbal2018hand,
+  title={Hand pose estimation via latent 2.5 d heatmap regression},
+  author={Iqbal, Umar and Molchanov, Pavlo and Gall, Thomas Breuel Juergen and Kautz, Jan},
+  booktitle={Proceedings of the European Conference on Computer Vision (ECCV)},
+  pages={118--134},
+  year={2018}
+}
+```
+```
+@inproceedings{spurr2020weakly,
+  title={Weakly supervised 3d hand pose estimation via biomechanical constraints},
+  author={Spurr, Adrian and Iqbal, Umar and Molchanov, Pavlo and Hilliges, Otmar and Kautz, Jan},
+  booktitle={Computer Vision--ECCV 2020: 16th European Conference, Glasgow, UK, August 23--28, 2020, Proceedings, Part XVII 16},
+  pages={211--228},
+  year={2020},
+  organization={Springer}
+}
+```
