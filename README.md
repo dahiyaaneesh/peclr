@@ -70,9 +70,9 @@ peclr_to_torchvision(resnet152, "path_to_peclr_with_resnet_152_base")
 ```
 
 # Pre-trained PeCLR models
-We offer ResNet-50 and ResNet-152 pre-trained on FreiHAND and YT3DH using PeCLR. The models can be found [here](https://dataset.ait.ethz.ch/downloads/guSEovHBpR/).
-Download the model desired to the folder of choice and then unpack it using
+We offer ResNet-50 and ResNet-152 pre-trained on FreiHAND and YT3DH using PeCLR. The models can be downloaded [here](https://dataset.ait.ethz.ch/downloads/guSEovHBpR/) and unpacked via tar:
 ```
+wget https://dataset.ait.ethz.ch/downloads/guSEovHBpR/peclr_rn{50,152}.tar.gz
 tar -xvzf peclr_rn{50,152}.tar.gz
 ```
 The models have been converted to torchvision's model description and can be loaded directly:
