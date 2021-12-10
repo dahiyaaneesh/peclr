@@ -44,7 +44,7 @@ export SAVED_META_INFO_PATH="$BASE_PATH/data/models"
 
 Note: [Comet](https://www.comet.ml/) is the logging service used to monitor the training of the models. Setting up comet is optional. It does not affect model training.
 
-In the following are the commands used to train the best performing PeCLR model of the main paper.
+Following commands can be used to train the best performing PeCLR model of the main paper.
 
 ### ResNet-50
 ```
@@ -110,7 +110,7 @@ tar -xvzf rn152_peclr_yt3d-fh_pt_fh_ft.tar.gz
 The model weights follow the model description of `src/models/rn_25D_wMLPref.py`. Thus, one can load them in the following manner:
 ```
 import torch
-from src.models.rn_25D_w_MLPref import RN_25D_wMLPref
+from src.models.rn_25D_wMLPref import RN_25D_wMLPref
 # For RN50
 model_type = 'rn50'
 # For RN152
