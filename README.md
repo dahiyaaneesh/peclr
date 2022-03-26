@@ -1,5 +1,5 @@
 # Self-Supervised 3D Hand Pose Estimation from monocular RGB via Contrastive Learning
-[Paper](https://arxiv.org/abs/2106.05953) | [Project Page](https://ait.ethz.ch/projects/2021/PeCLR/) | [Blog Post](https://eth-ait.medium.com/peclr-leverage-unlabeled-pose-data-with-pose-equivariant-contrastive-learning-2ca624083614)
+[Paper](https://arxiv.org/abs/2106.05953) | [Project Page](https://ait.ethz.ch/projects/2021/peclr/) | [Blog Post](https://eth-ait.medium.com/peclr-leverage-unlabeled-pose-data-with-pose-equivariant-contrastive-learning-2ca624083614)
 
 <p align="center">
 <img src="peclr.gif" alt="drawing" width="1000"/>
