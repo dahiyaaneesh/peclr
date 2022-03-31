@@ -135,6 +135,11 @@ auc=0.360, mean_kp3d_avg=4.56 cm
 Evaluation 3D KP ALIGNED results:
 auc=0.868, mean_kp3d_avg=0.66 cm
 ```
+To reproduce these numbers, execute the following commands
+```
+python testing/pred_fh.py --model_path {PATH TO {rn50,rn152}_peclr_yt3d-fh_pt_fh_ft.pth}
+```
+This will create a file called `pred_{rn50,rn152}.zip` which can be uploaded to codalab to produce the results above.
 # Citation
 If this repository has been useful for your project, please cite the following work:
 ```
