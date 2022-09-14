@@ -5,7 +5,7 @@
 <img src="peclr.gif" alt="drawing" width="1000"/>
 </p>
 
-This is the official repository containing the code for the paper [Self-Supervised 3D Hand Pose Estimation from monocular RGB via Equivariant Contrastive Learning](https://arxiv.org/abs/2106.05953).
+This is the official repository containing the code for the paper [PeCLR: Self-Supervised 3D Hand Pose Estimation from monocular RGB via Equivariant Contrastive Learning](https://arxiv.org/abs/2106.05953).
 
 # Installation
 The code has been tested on Ubuntu 18.04.5 and python 3.8.10
